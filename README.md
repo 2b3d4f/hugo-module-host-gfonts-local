@@ -6,13 +6,13 @@ A Hugo module for hosting Google Fonts on your site.
 
 **This module only supports the `woff2` format.**
 
-1. Initialize your Hugo site as a Hugo Module
+1. Initialize your site as a Hugo Module
 
    ```bash
    hugo mod init <repo_url>
    ```
 
-2. Add this module to your Hugo site's configuration
+2. Add this module to your site's configuration
 
     ```toml
     # hugo.toml
