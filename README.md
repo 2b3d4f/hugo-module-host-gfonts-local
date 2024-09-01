@@ -37,7 +37,7 @@ https://github.com/user-attachments/assets/e1344e4a-2f99-41ec-9d8b-1278f2557417
 {{- partialCached "gfonts.html" (dict "url" $url "fontsDir" "fonts/gfonts" "cssDir" "css/gfonts" "cssFile" "gfonts.css" ) }}
 ```
 
-### Variables
+### Partial parameters
 
 - `url` - the url to the Google Fonts CSS file
 - `fontsDir` - the directory to store the fonts
