@@ -30,7 +30,7 @@ This Hugo Module was inspired by the Wordpress plugin OMGF.
 
 This module only supports the `woff2` format.
 
-## Examples
+## Usage
 
 https://github.com/user-attachments/assets/e1344e4a-2f99-41ec-9d8b-1278f2557417
 
