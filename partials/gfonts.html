@@ -59,7 +59,7 @@
 {{- $localFontStylesheetContent := delimit $updatedFontFaceBlocks "\n" }}
 {{/*  {{- fmt.Warnf "updated:\n%v" $localFontStylesheetContent }}  */}}
 {{- $localFontStylesheetPath := printf "/%s/%s" $cssDir $cssFile }}
-{{- $localFontStylesheet := $localFontStylesheetContent | resources.FromString $localFontStylesheetPath | fingerprint }}
+{{- $localFontStylesheet := $localFontStylesheetContent | resources.FromString $localFontStylesheetPath | minify | fingerprint }}
 {{- if eq hugo.Environment "development" }}
   <link
     rel="stylesheet"
