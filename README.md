@@ -34,7 +34,7 @@ https://github.com/user-attachments/assets/e1344e4a-2f99-41ec-9d8b-1278f2557417
 
 ```gotmpl
 {{- $url := "https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" }}
-{{- partialCached "gfonts.html" (dict "url" $url "fontsDir" "fonts" "cssDir" "css" "cssFile" "fonts.css" ) }}
+{{- partialCached "gfonts.html" (dict "url" $url "fontsDir" "fonts/gfonts" "cssDir" "css/gfonts" "cssFile" "gfonts.css" ) }}
 ```
 
 ### Variables
