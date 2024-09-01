@@ -30,16 +30,16 @@
     {{- $fontRemoteDest := index (index (findRESubmatch `url\(([^)]+)\)` $fontFaceBlock) 0) 1 }}
     {{- $fontRemoteDirectory := printf "%s/%s" (index (index (findRESubmatch `(https:\/\/)(.*)\/` $fontRemoteDest) 0) 1) (index (index (findRESubmatch `(https:\/\/)(.*)\/` $fontRemoteDest) 0) 2) }}
     {{- $fontRemoteFile := findRESubmatch `\/([^\/]+)\.([^\W]+)$` $fontRemoteDest }}
-    {{- $cacheKey := print $fontRemoteDest (now.Format "2006-01-02") }}
-    {{- $downloadedFont := resources.GetRemote $fontRemoteDest (dict "key" $cacheKey) }}
-    {{- if $downloadedFont.Err }}
-      {{- fmt.Errorf "Failed to download font: %s" $downloadedFont.Err }}
+    {{- $fontRemoteCacheKey := print $fontRemoteDest (now.Format "2006-01-02") }}
+    {{- $fontRemote := resources.GetRemote $fontRemoteDest (dict "key" $fontRemoteCacheKey) }}
+    {{- if $fontRemote.Err }}
+      {{- fmt.Errorf "Failed to download font: %s" $fontRemote.Err }}
     {{- else }}
       {{- $fontLocalPath := printf "/%s/%s/%s.%v.%s" $fontsDir (lower $fontFamily.normalized) (lower $fontFamily.normalized) $fontFaceBlocksIndex (index (index $fontRemoteFile 0) 2)}}
       {{- $fontLocalAbsURL := absURL (printf "%s/%s/%s.%v.%s" $fontsDir (lower $fontFamily.normalized) (lower $fontFamily.normalized) $fontFaceBlocksIndex (index (index $fontRemoteFile 0) 2))}}
-      {{- $copiedFont := resources.Copy $fontLocalPath $downloadedFont }}
-      {{- if $copiedFont }}
-        {{- $copiedFont.Publish }}
+      {{- $fontLocalCopied := resources.Copy $fontLocalPath $fontRemote }}
+      {{- if $fontLocalCopied }}
+        {{- $fontLocalCopied.Publish }}
         {{- $updatedFontFaceBlock := replaceRE `url\(([^)]+)\)` (printf "url('%s')" $fontLocalAbsURL) $fontFaceBlock }}
         {{- $updatedFontFaceBlocks = $updatedFontFaceBlocks | append $updatedFontFaceBlock }}
       {{- else }}
@@ -48,11 +48,11 @@
     {{- $fontFaceBlocksIndex = add $fontFaceBlocksIndex 1 }}
   {{- end }}
 {{- end }}
-{{- $localFontStylesheetContent := delimit $updatedFontFaceBlocks "\n" }}
-{{- $localFontStylesheetPath := printf "/%s/%s" $cssDir $cssFile }}
-{{- $localFontStylesheet := $localFontStylesheetContent | resources.FromString $localFontStylesheetPath | minify | fingerprint }}
+{{- $fontLocalStylesheetContent := delimit $updatedFontFaceBlocks "\n" }}
+{{- $fontLocalStylesheetPath := printf "/%s/%s" $cssDir $cssFile }}
+{{- $fontLocalStylesheet := $fontLocalStylesheetContent | resources.FromString $fontLocalStylesheetPath | minify | fingerprint }}
 {{- if eq hugo.Environment "development" }}
-  <link rel="stylesheet" href="{{- $localFontStylesheet.Permalink }}" />
+  <link rel="stylesheet" href="{{- $fontLocalStylesheet.Permalink -}}" />
 {{- else }}
-  <link rel="stylesheet" href="{{- $localFontStylesheet.Permalink }}" crossorigin="anonymous" integrity="{{- $localFontStylesheet.Data.Integrity }}" />
+  <link rel="stylesheet" href="{{- $fontLocalStylesheet.Permalink -}}" crossorigin="anonymous" integrity="{{- $fontLocalStylesheet.Data.Integrity }}" />
 {{- end }}
