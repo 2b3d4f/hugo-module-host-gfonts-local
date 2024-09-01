@@ -54,5 +54,7 @@
 {{- if eq hugo.Environment "development" }}
   <link rel="stylesheet" href="{{- $fontLocalStylesheet.Permalink -}}" />
 {{- else }}
+  <link rel="preconnect" href='{{absURL (printf "%s" $cssDir )}}' />
+  <link rel="preconnect" href='{{absURL (printf "%s" $fontsDir )}}' crossorigin/>
   <link rel="stylesheet" href="{{- $fontLocalStylesheet.Permalink -}}" crossorigin="anonymous" integrity="{{- $fontLocalStylesheet.Data.Integrity }}" />
 {{- end }}
