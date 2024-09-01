@@ -6,6 +6,8 @@ This Hugo Module was inspired by the Wordpress plugin OMGF.
 
 ## Installation
 
+**This module only supports the `woff2` format.**
+
 1. Initialize your Hugo site as a Hugo Module
 
    ```bash
@@ -27,8 +29,6 @@ This Hugo Module was inspired by the Wordpress plugin OMGF.
     [mediaTypes."font/woff2"]
     suffixes = [ "woff2" ]
     ```
-
-This module only supports the `woff2` format.
 
 ## Usage
 
