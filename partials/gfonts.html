@@ -23,7 +23,7 @@
 {{- $fontsDir := .fontsDir}}
 {{- $cssDir := .cssDir }}
 {{- $cssFile := .cssFile }}
-{{- $fontFaceBlocks := partial "gfonts-helper/font-face-extractor.html" $stylesheet }}
+{{- $fontFaceBlocks := partial "helper/font-face-extractor.html" $stylesheet }}
 {{- $updatedFontFaceBlocks := slice }}
 {{- with $fontFaceBlocks }}
   {{- $fontFaceBlocksIndex := 0 }}
