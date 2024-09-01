@@ -61,15 +61,7 @@
 {{- $localFontStylesheetPath := printf "/%s/%s" $cssDir $cssFile }}
 {{- $localFontStylesheet := $localFontStylesheetContent | resources.FromString $localFontStylesheetPath | minify | fingerprint }}
 {{- if eq hugo.Environment "development" }}
-  <link
-    rel="stylesheet"
-    href="{{- $localFontStylesheet.Permalink }}"
-  />
+  <link rel="stylesheet" href="{{- $localFontStylesheet.Permalink }}" />
 {{- else }}
-  <link
-    rel="stylesheet"
-    href="{{- $localFontStylesheet.Permalink }}"
-    crossorigin="anonymous"
-    integrity="{{- $localFontStylesheet.Data.Integrity }}"
-  />
+  <link rel="stylesheet" href="{{- $localFontStylesheet.Permalink }}" crossorigin="anonymous" integrity="{{- $localFontStylesheet.Data.Integrity }}" />
 {{- end }}
