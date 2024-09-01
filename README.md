@@ -32,7 +32,7 @@ This module only supports the `woff2` format.
 
 ## Examples
 
-https://github.com/user-attachments/assets/268da097-4e0f-4839-abde-1e8428922a0e
+https://github.com/user-attachments/assets/e1344e4a-2f99-41ec-9d8b-1278f2557417
 
 ```gotmpl
 {{- $url := "https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" }}
