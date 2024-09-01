@@ -1,4 +1,4 @@
-# hugo-module-google-fonts
+# hugo-module-host-gfonts-local
 
 A Hugo module for hosting Google Fonts on your site.
 
