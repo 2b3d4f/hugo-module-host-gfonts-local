@@ -2,8 +2,6 @@
 
 A Hugo module for hosting Google Fonts on your site.
 
-This Hugo Module was inspired by the Wordpress plugin OMGF.
-
 ## Installation
 
 **This module only supports the `woff2` format.**
