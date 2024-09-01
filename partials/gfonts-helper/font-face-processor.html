@@ -1,0 +1,19 @@
+{{- /*
+  Helper: Font-face Block Processor
+  Processes each @font-face block, downloads fonts, and updates URLs.
+*/ -}}
+
+{{ $fontFaceBlocks := .fontFaceBlocks }}
+{{ $fontsDir := .fontsDir }}
+
+{{ $updatedFontFaceBlocks := slice }}
+
+{{ range $fontFaceBlocks }}
+  {{ $fontFaceBlock := index . 0 }}
+  {{ $fontFamilyName := partial "gfonts-helper/extract-font-family.html" (index . 1) }}
+
+  {{ $updatedBlock := partial "gfonts-helper/process-font-urls.html" (dict "block" $fontFaceBlock "family" $fontFamilyName "fontsDir" $fontsDir) }}
+  {{ $updatedFontFaceBlocks = $updatedFontFaceBlocks | append $updatedBlock }}
+{{ end }}
+
+{{ return $updatedFontFaceBlocks }}

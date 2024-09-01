@@ -1,0 +1,19 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+
+[params.googleFonts]
+fontDir = "fonts"
+stylesheetDir = "css"
+stylesheetName = "fonts.css"
+
+[mediaTypes."font/woff2"]
+suffixes = [ "woff2" ]
+
+[module.hugoVersion]
+min = "0.133.0"
+extended = false
+
+[[module.mounts]]
+source = "partials"
+target = "layouts/partials"
