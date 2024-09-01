@@ -3,20 +3,20 @@
   This partial processes font-face declarations in a stylesheet, downloads fonts,
   and rewrites the stylesheet to use local copies of the fonts.
 */ -}}
-{{- $gfontsCssUrl := .url}}
-{{- $gfontsCssCacheKey := print $gfontsCssUrl (now.Format "2006-01-02") }}
-{{- $gfontsCssOpt := dict "key" $gfontsCssCacheKey "headers" (dict "user-agent" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36") }}
-{{- $gfontsCss := "" }}
-{{- with resources.GetRemote $gfontsCssUrl $gfontsCssOpt }}
+{{- $gfontsStylesheetUrl := .url}}
+{{- $gfontsStylesheetCacheKey := print $gfontsStylesheetUrl (now.Format "2006-01-02") }}
+{{- $gfontsStylesheetOpt := dict "key" $gfontsStylesheetCacheKey "headers" (dict "user-agent" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36") }}
+{{- $gfontsStylesheet := "" }}
+{{- with resources.GetRemote $gfontsStylesheetUrl $gfontsStylesheetOpt }}
   {{- with .Err }}
     {{- errorf "%s" . }}
   {{ else }}
-    {{- $gfontsCss = . }}
+    {{- $gfontsStylesheet = . }}
   {{- end }}
 {{- else }}
-  {{- errorf "Unable to get remote resource %q" $gfontsCssUrl }}
+  {{- errorf "Unable to get remote resource %q" $gfontsStylesheetUrl }}
 {{- end }}
-{{- $stylesheet := $gfontsCss }}
+{{- $stylesheet := $gfontsStylesheet }}
 {{- $fontsDir := .fontsDir}}
 {{- $cssDir := .cssDir }}
 {{- $cssFile := .cssFile }}
