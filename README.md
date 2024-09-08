@@ -23,7 +23,7 @@ A Hugo module for hosting Google Fonts on your site.
 
     [module]
         [[module.imports]]
-        path = "github.com/2b3d4f/hugo-module-google-fonts-local"
+        path = "github.com/2b3d4f/hugo-module-host-gfonts-local"
     ```
 
     **`hugo.yaml`**
@@ -35,7 +35,7 @@ A Hugo module for hosting Google Fonts on your site.
             - woff2
     module:
         imports:
-            - path: github.com/2b3d4f/hugo-module-google-fonts-local
+            - path: github.com/2b3d4f/hugo-module-host-gfonts-local
     ```
 
 ## Usage
