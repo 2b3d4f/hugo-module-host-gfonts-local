@@ -4,7 +4,8 @@ A Hugo module for hosting Google Fonts on your site.
 
 ## Installation
 
-**This module only supports the `woff2` format.**
+> [!IMPORtANT]
+> This module only supports the `woff2` format.
 
 1. Initialize your site as a Hugo Module
 
